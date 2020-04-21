@@ -1,0 +1,17 @@
+sudo: required
+services: docker
+
+before_install:
+  - bash .travis/main.sh
+  - cd laravel-app && docker run --rm -v $(pwd):/app composer install
+  - cp .env.example .env && cd ..
+
+script:
+  - make test
+  - make image
+
+deploy:
+  provider: script
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && make push-image
+  on:
+    branch: master
