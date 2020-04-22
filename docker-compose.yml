@@ -4,6 +4,8 @@ services:
   app:
     build:
       context: .
+      args:
+        PHP_VERSION: $PHP_VERSION
     container_name: app
     restart: unless-stopped
     tty: true
