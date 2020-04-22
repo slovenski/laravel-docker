@@ -1,7 +1,7 @@
-FROM php:7.2-fpm
-LABEL maintainer="Gibran Svarga <contact.gibransvarga@gmail.com>"
+ARG PHP_VERSION
 
-ENV LARAVEL_PHP_VERSION=1.0
+FROM php:${PHP_VERSION}
+LABEL maintainer="Gibran Svarga <contact.gibransvarga@gmail.com>"
 
 COPY laravel-app/composer.lock /var/www/
 COPY laravel-app/composer.json /var/www/

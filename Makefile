@@ -1,5 +1,5 @@
-IMAGE:=slovenski/laravel-php
-VERSION:=$(shell grep LARAVEL_PHP_VERSION Dockerfile | awk '{print $2}' | cut -d '=' -f 2)
+include .env
+export
 
 test:
 	true
